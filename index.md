@@ -4,4 +4,9 @@
 # See: https://jekyllrb.com/docs/themes/#overriding-theme-defaults
 layout: home
 ---
-Testing.
+{% assign image_files = site.static_files %}
+{% for myimage in image_files %}
+    {{ myimage.path }}
+{% endfor %}
+
+endfor

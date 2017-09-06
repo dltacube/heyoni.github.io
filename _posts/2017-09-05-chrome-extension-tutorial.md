@@ -1,14 +1,51 @@
 ---
 layout: post
-title:  "Do I have to write stuff here?"
-date:   2017-09-05 19:24:55 -0400
-categories: nocategory
+title: Some quick fixes for the oudated Google Chrome Extension Tutorial
+type: post
+published: true
+comments: true
 ---
-This is cool...
 
-So I can type code like this. Maybe if I respected the 80 char width limit..
+If you're following this [guide](https://developer.chrome.com/extensions/getstarted)
+to learn how to write extensions, you'll find that it is seriously
+oudated. With some effort though that can be fixed, and that's what I'll
+describe how to do here.
 
-``` js
+### Register with Google API
+
+If you're starting with the overview, you'll notice that after putting
+together the extension and loading it in your browser, the extension
+will not load any images in its popup window.
+
+The first thing to understand is that the API used in that tutorial is
+deprecated (by Google themselves). There's still a way to access the
+search API according to this
+[forum post](https://stackoverflow.com/questions/4082966/what-are-the-alternatives-now-that-the-google-web-search-api-has-been-deprecated).
+
+### Figure out your request credentials
+Once you have a key and account on [CSE](https://cse.google.com)
+configure the custom search according to the instructions above. Enable
+images, set it search the entire web, etc...then using the search box on
+the right side of the control panel, search anything, and then click the
+images tab to see those results. Do this with the network tab of your
+browser's inspector window open. From there, copy the network request
+URL request with all of its keys and parameters.
+
+![alt text]({{ site.static_files[1].path }} "inspector after clicking
+the image tab")
+
+### Edit your popup.js
+Once you know you've got all your parameters, edit your `popup.js` file
+to do a couple of things.
+* Fix your `searchUrl` variable by adding the query url you got from
+the inspector
+* Remove the `!response.responseData` condition from the if statement on
+line 71
+* Remove any instance of `.responseData` in the code. The search results
+nowadays are stored in `response.results`
+
+Your code should look something like this:
+```
 // Copyright (c) 2014 The Chromium Authors. All rights reserved.
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
@@ -69,7 +106,7 @@ function getImageUrl(searchTerm, callback, errorCallback) {
     // Google image search - 100 searches per day.
     // https://developers.google.com/image-search/
 
-    var searchUrl = 'https://www.googleapis.com/customsearch/v1element?key=&num=20&hl=en&sig=&searchtype=image&cx=&cse_tok=' +
+    var searchUrl = 'https://www.googleapis.com/customsearch/v1element?key=KEYGOESHERE&num=20&hl=en&sig=SIGGOESHERE&searchtype=image&cx=CXGOESHERE&cse_tok=TOKENGOESHERE' +
         '&q=' + encodeURIComponent(searchTerm);
     var x = new XMLHttpRequest();
     x.open('GET', searchUrl);
@@ -130,4 +167,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 ```
 
+I know, it's probably not even worth fixing it but it was a fun exercise
+ and I thought I'd share it anyways.
 
+ ![alt text]({{ site.static_files[0].path }})
