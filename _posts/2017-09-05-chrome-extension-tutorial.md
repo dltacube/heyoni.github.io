@@ -31,7 +31,7 @@ images tab to see those results. Do this with the network tab of your
 browser's inspector window open. From there, copy the network request
 URL request with all of its keys and parameters.
 
-![alt text]({{ site.static_files[1].path }} "inspector after clicking
+![alt text]({{ site.url }}/assets/img/chrome-inspector.png "inspector after clicking
 the image tab")
 
 ### Edit your popup.js
@@ -170,4 +170,4 @@ document.addEventListener('DOMContentLoaded', function() {
 I know, it's probably not even worth fixing it but it was a fun exercise
  and I thought I'd share it anyways.
 
- ![alt text]({{ site.static_files[0].path }})
+ ![alt text]({{ site.url }}/assets/img/chrome-extension-works.png)
