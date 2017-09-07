@@ -169,5 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 I know, it's probably not even worth fixing it but it was a fun exercise
  and I thought I'd share it anyways.
+ 
+ [source](https://github.com/heyoni/chrome-extension-tutorial)
 
  ![alt text]({{ site.url }}/assets/img/chrome-extension-works.png)
