@@ -4,4 +4,4 @@ _site
 _drafts
 \.idea/
 
-*.DS_Store
+.DS_Store
