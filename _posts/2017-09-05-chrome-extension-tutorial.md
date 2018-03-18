@@ -106,7 +106,8 @@ function getImageUrl(searchTerm, callback, errorCallback) {
     // Google image search - 100 searches per day.
     // https://developers.google.com/image-search/
 
-    var searchUrl = 'https://www.googleapis.com/customsearch/v1element?key=KEYGOESHERE&num=20&hl=en&sig=SIGGOESHERE&searchtype=image&cx=CXGOESHERE&cse_tok=TOKENGOESHERE' +
+    var searchUrl = 'https://www.googleapis.com/customsearch/v1element?key=KEYGOESHERE&num=20&
+    hl=en&sig=SIGGOESHERE&searchtype=image&cx=CXGOESHERE&cse_tok=TOKENGOESHERE' +
         '&q=' + encodeURIComponent(searchTerm);
     var x = new XMLHttpRequest();
     x.open('GET', searchUrl);
