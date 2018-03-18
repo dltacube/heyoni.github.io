@@ -31,7 +31,7 @@ images tab to see those results. Do this with the network tab of your
 browser's inspector window open. From there, copy the network request
 URL request with all of its keys and parameters.
 
-![alt text]({{ site.url }}/assets/img/chrome-inspector.png "inspector after clicking
+![alt text]({{ site.url }}/assets/images/chrome-inspector.png "inspector after clicking
 the image tab")
 
 ### Edit your popup.js
@@ -172,4 +172,4 @@ I know, it's probably not even worth fixing it but it was a fun exercise
  
  [source](https://github.com/heyoni/chrome-extension-tutorial)
 
- ![alt text]({{ site.url }}/assets/img/chrome-extension-works.png)
+ ![alt text]({{ site.url }}/assets/images/chrome-extension-works.png)
